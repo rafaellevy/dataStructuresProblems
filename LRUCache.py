@@ -2,15 +2,36 @@ class LRU_Cache(object):
 
     def __init__(self, capacity):
         # Initialize class variables
-        pass
+        self.cache = {}
+        self.capacity = capacity or 1
+        self.currentSize = 0
+        self.listOfMostRecent = DoublyLinkedList()
 
     def get(self, key):
         # Retrieve item from provided key. Return -1 if nonexistent. 
-        pass
+        if key not in self.cache:
+            return -1
+        self.listOfMostRecent.setHeadTo(self.cache[key])
+        return self.cache[key].value
 
     def set(self, key, value):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item. 
-        pass
+        if key not in self.cache:
+            if self.currentSize == self.capacity:
+                keyToRemove = self.listOfMostRecent.tail.key
+                self.listOfMostRecent.removeTail()
+                del self.cache[keyToRemove]
+                newNode = DoublyLinkedListNode(key, value)
+                self.listOfMostRecent.setHeadTo(newNode)
+                self.cache[key] = newNode
+            elif self.currentSize < self.capacity:
+                newNode = DoublyLinkedListNode(key, value)
+                self.listOfMostRecent.setHeadTo(newNode)
+                self.currentSize += 1
+                self.cache[key] = newNode
+
+
+
 
 class DoublyLinkedList:
     def __init__(self):
@@ -60,6 +81,23 @@ class DoublyLinkedListNode:
         self.prev = None
         self.nex = None
 
-        
+
+our_cache = LRU_Cache(5)
+
+our_cache.set(1, 1)
+our_cache.set(2, 2)
+our_cache.set(3, 3)
+our_cache.set(4, 4)
+
+
+print(our_cache.get(1))      # returns 1
+print(our_cache.get(2))       # returns 2
+print(our_cache.get(9))      # returns -1 because 9 is not present in the cache
+
+our_cache.set(5, 5) 
+our_cache.set(6, 6)
+
+print(our_cache.get(3))     # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+
 
 
