@@ -17,6 +17,24 @@
 import os
 
 def find_files(suffix, path):
+    listOfPaths = []
+    if path.endswith(suffix):
+        return path
+
+    if os.path.isdir(path):
+        filesAndDirectories = os.listdir(path)
+        for name in filesAndDirectories:
+            newPath = os.path.join(path, name)
+            f = find_files(suffix, newPath)
+            if f:
+                listOfPaths.append(f)
+
+    return listOfPaths
+
+testString = "/Users/ultraviral/Downloads/testdir"
+print(find_files(".c", testString ))
+
+
     # if os.path.endswith(suffix):
         # listOfPaths.append(os.path)
     # if os.path.isdir(path):
@@ -37,10 +55,10 @@ def find_files(suffix, path):
 
 
 # Let us print the files in the directory in which you are running this script
-print (os.listdir("."))
+#print (os.listdir("."))
 
 # Let us check if this file is indeed a file!
-print (os.path.isfile("./ex.py"))
+#print (os.path.isfile("./ex.py"))
 
 # Does the file end with .py?
-print ("./ex.py".endswith(".py"))
+#print ("./ex.py".endswith(".py"))
