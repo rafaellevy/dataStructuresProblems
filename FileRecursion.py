@@ -17,19 +17,24 @@
 import os
 
 def find_files(suffix, path):
-    listOfPaths = []
-    if path.endswith(suffix):
-        return path
-
-    if os.path.isdir(path):
-        filesAndDirectories = os.listdir(path)
-        for name in filesAndDirectories:
-            newPath = os.path.join(path, name)
-            f = find_files(suffix, newPath)
-            if f:
-                listOfPaths.append(f)
-
-    return listOfPaths
+    # check if path is directory or not
+    if not os.path.isdir(path):
+        return "invalid path"
+    # collect all subdirectories and files in list for looping
+    list_of_paths = os.listdir(path)
+    output = []
+    for element in list_of_paths:
+        item = os.path.join(path, element)
+        # check if the item is a directory
+        if os.path.isdir(item):
+            # recursion method
+            output += find_files(suffix, item)
+        # check if the file extension equals the suffix
+        if os.path.isfile(item) and item.endswith(suffix):
+            output.append(item)
+    
+    return output
+    
 
 testString = "/Users/ultraviral/Downloads/testdir"
 print(find_files(".c", testString ))
