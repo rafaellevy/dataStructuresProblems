@@ -33,15 +33,11 @@ parent.add_group(child)
 def is_user_in_group(user, group):
     """
     Return True if user is in the group, False otherwise.
-
     Args:
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
-    
-
     # if both are empty return false
-
     if user in group.users:
         return True
     if len(group.groups) == 0:
