@@ -1,3 +1,4 @@
+from os import error
 import sys
 from collections import Counter
 from typing import Awaitable
@@ -23,6 +24,8 @@ def traverse_tree(node, binary_code, binary_prefix):
             traverse_tree(node.right, binary_code, binary_prefix + "1")
 
 def huffman_encoding(data):
+    if data == "":
+        data = "empty"
     counter = dict(Counter(data))
     frequencyArray = []
     for key, value in counter.items():
@@ -76,20 +79,47 @@ def huffman_decoding(data, tree):
 if __name__ == "__main__":
     codes = {}
 
+    # case 1
+    a_empty_string = ""
+    # case 2
     a_great_sentence = "The bird is the word"
-
+    # case 3
+    a_binary_string = "011100101"
+    
+    # before encoding check size and content 
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_empty_string)))
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_binary_string)))
+    print ("The content of the data is: {}\n".format(a_empty_string))
     print ("The content of the data is: {}\n".format(a_great_sentence))
-
-    encoded_data, tree = huffman_encoding(a_great_sentence)
-
+    print ("The content of the data is: {}\n".format(a_binary_string))
+    print()
+    # case 1 encoding and decoding 
+    encoded_data, tree = huffman_encoding(a_empty_string)
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
-
     decoded_data = huffman_decoding(encoded_data, tree)
-
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
+    # expect the size and the content of the data to stay the same
+    print()
+    # case 2 encoding and decoding 
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    decoded_data = huffman_decoding(encoded_data, tree)
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+    # expect the size of the encoded data to be smaller
+    print()
+    # case 3 encoding and decoding 
+    encoded_data, tree = huffman_encoding(a_binary_string)
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    decoded_data = huffman_decoding(encoded_data, tree)
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+    # expect the size and the content of the data to stay the same
 
 
 

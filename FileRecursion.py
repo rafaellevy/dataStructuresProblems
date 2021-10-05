@@ -36,34 +36,12 @@ def find_files(suffix, path):
     return output
     
 
-testString = "/Users/ultraviral/Downloads/testdir"
+testString = "/Users/rafaellevy/Downloads/testdir"
+print(find_files("", testString ))
+# expect empty list
 print(find_files(".c", testString ))
+# expect a list with all the files ending in .c
+print(find_files(".pdf", testString ))
+# expect empty list
 
-
-    # if os.path.endswith(suffix):
-        # listOfPaths.append(os.path)
-    # if os.path.isdir(path):
-        # filesAndDirectories = os.listdir(path)
-        # for name in FilesAndDirectories:
-            # if os.path.endswith(suffix):
-                # listOfPaths.append(os.path)    
-            # newPath = os.path.join(name)
-            # find_files(suffix, newPath)
-
-
-
-    #return listOfPaths 
-
-## Locally save and call this file ex.py ##
-
-# Code to demonstrate the use of some of the OS modules in python
-
-
-# Let us print the files in the directory in which you are running this script
-#print (os.listdir("."))
-
-# Let us check if this file is indeed a file!
-#print (os.path.isfile("./ex.py"))
-
-# Does the file end with .py?
-#print ("./ex.py".endswith(".py"))
+   
