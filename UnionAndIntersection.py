@@ -56,7 +56,6 @@ def union(llist_1, llist_2):
     while cur_node:
         union_set.add(cur_node.value)
         cur_node = cur_node.next
-    
     # set has all the union values now, so we create a new linked list.
     union_llist = LinkedList()
     for value in union_set:
@@ -64,8 +63,6 @@ def union(llist_1, llist_2):
     return union_llist
 
 def intersection(llist_1, llist_2):
-    # Your Solution Here
-    # create first set
     inter_set1 = set()
     # set pointer/cur_node at head of first linked list
     cur_node = llist_1.head
@@ -82,17 +79,14 @@ def intersection(llist_1, llist_2):
         cur_node = cur_node.next
     # find intersection of two sets
     inter_set = inter_set1.intersection(inter_set2)
-
     # using that intersection set, make the intersection linked list
     inter_llist = LinkedList()
     for value in inter_set:
         inter_llist.append(value)
-
     return inter_llist
 
 
 # Test case 1
-
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -105,7 +99,11 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
+"""expect union to be:
+32 -> 65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 21 -> """ 
 print (union(linked_list_1,linked_list_2))
+"""expect intersection to be:
+4 -> 21 -> 6 -> """ 
 print (intersection(linked_list_1,linked_list_2))
 
 # Test case 2
@@ -122,5 +120,27 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
+"""expect union to be:
+65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 23 -> """
 print (union(linked_list_3,linked_list_4))
+"""expect intersection to be: empty """
 print (intersection(linked_list_3,linked_list_4))
+
+# Test case 3
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_1 = []
+element_2 = [1,7,8,9,11,21,1]
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+"""expect union to be:
+1 -> 7 -> 8 -> 9 -> 11 -> 21 -> """
+print (union(linked_list_5,linked_list_6))
+"""expect intersection to be: empty """
+print (intersection(linked_list_5,linked_list_6))
+

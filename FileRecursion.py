@@ -37,11 +37,14 @@ def find_files(suffix, path):
     
 
 testString = "/Users/rafaellevy/Downloads/testdir"
+# expect empty list
 print(find_files("", testString ))
-# expect empty list
-print(find_files(".c", testString ))
+print()
 # expect a list with all the files ending in .c
-print(find_files(".pdf", testString ))
+print(find_files(".c", testString ))
+print()
 # expect empty list
+print(find_files(".pdf", testString ))
+
 
    

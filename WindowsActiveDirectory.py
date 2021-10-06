@@ -31,12 +31,6 @@ child.add_group(sub_child)
 parent.add_group(child)
 
 def is_user_in_group(user, group):
-    """
-    Return True if user is in the group, False otherwise.
-    Args:
-      user(str): user name/id
-      group(class:Group): group to check user membership against
-    """
     # if both are empty return false
     if user in group.users:
         return True
@@ -48,7 +42,12 @@ def is_user_in_group(user, group):
         # looking for the name inside of the users.array
     for object in group.groups:
         return is_user_in_group(user, object)
-    
-print(is_user_in_group(sub_child_user, child)) # True
-print(is_user_in_group(sub_child_user, parent))  # True
-print(is_user_in_group("Some User", sub_child))  # False
+
+# Expect to be true
+print(is_user_in_group(sub_child_user, child))
+print()
+# Expect to be true 
+print(is_user_in_group(sub_child_user, parent))
+print()
+# Expect to be false
+print(is_user_in_group("Some User", sub_child))

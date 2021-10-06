@@ -40,13 +40,6 @@ class BlockChain:
 # Created first/genesis block
 timestamp = datetime.datetime.now()
 data = 'Genesis Block'
-"""
-to_hash = str(timestamp) + data
-sha = hashlib.sha256()
-sha.update(to_hash.encode('utf-8'))
-previous_hash = sha.hexdigest()
-# print(previous_hash)
-"""
 testBlock = Block(timestamp, data, 0)
 
 # Create blockchain
@@ -60,30 +53,32 @@ data_second_block = 'Second Block'
 # second_block must take previous hash
 second_block = Block(timestamp, data_second_block, testBlock.hash)
 blockchain.add_block(second_block)
-
 # add third block with the same timestamp and data as the second block
 third_block = Block(timestamp, data_second_block, second_block.hash)
 blockchain.add_block(third_block)
 
-
+""" expect hash of 3rd block to be unique. The previous hash is 
+the hash of the second block. The data and timestamp are the same 
+as the second block
+"""
 print("The previous hash (second block):", third_block.previous_hash)
 print("The hash (third block):", third_block.hash)
 print("The data and time (third block):", third_block.data, third_block.timestamp)
 print()
+
+""" expect hash of 2nd block to be unique. The previous hash is 
+the hash of the first block. Timestamp is the same 
+as the first block but data is different. 
+"""
 print("The previous hash (first block):", second_block.previous_hash)
 print("The hash (second block):", second_block.hash)
 print("The data and time (second block):", second_block.data, second_block.timestamp)
 print()
+
+""" expect hash of 1st block to be unique. The previous hash is 
+Zero. 
+"""
 print("The previous hash (no previous block):", testBlock.previous_hash)
 print("The hash (first/genesis block):", testBlock.hash)
 print("The data and time (first/genesis block):", testBlock.data, testBlock.timestamp)
     
-
-
-#Hello Rafael, you made great work so far.
-"""First, if my answer is helpful Please mark it as accepted.
-Your code is good and well organized.
-But you need to add at least three test cases with two edge cases .
-Add one edge case with new object if the block is empty and add another with new object if the timestamp is the same.
-If you still have anything else please let me know.
-Best wishes."""

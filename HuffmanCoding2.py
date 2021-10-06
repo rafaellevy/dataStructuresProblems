@@ -94,33 +94,33 @@ if __name__ == "__main__":
     print ("The content of the data is: {}\n".format(a_great_sentence))
     print ("The content of the data is: {}\n".format(a_binary_string))
     print()
-    # case 1 encoding and decoding 
+    # case 1 encoding and decoding
+    # expect the size of the encoded data to be smaller 
     encoded_data, tree = huffman_encoding(a_empty_string)
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
     decoded_data = huffman_decoding(encoded_data, tree)
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
-    # expect the size and the content of the data to stay the same
     print()
-    # case 2 encoding and decoding 
+    # case 2 encoding and decoding
+    # expect the size of the encoded data to be smaller 
     encoded_data, tree = huffman_encoding(a_great_sentence)
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
     decoded_data = huffman_decoding(encoded_data, tree)
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
-    # expect the size of the encoded data to be smaller
     print()
-    # case 3 encoding and decoding 
+    # case 3 encoding and decoding
+    # expect the size of the encoded data to be smaller 
     encoded_data, tree = huffman_encoding(a_binary_string)
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
     decoded_data = huffman_decoding(encoded_data, tree)
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
-    # expect the size and the content of the data to stay the same
-
+    
 
 
 
