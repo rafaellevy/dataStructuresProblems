@@ -32,19 +32,19 @@ def huffman_encoding(data):
         node = Node(value, key)
         frequencyArray.append(node)
 
-    pq = sorted(frequencyArray, key = lambda node : node.value, reverse=True)
+    priorityQueue = sorted(frequencyArray, key = lambda node : node.value, reverse=True)
 
     huff_tree = []
 
-    while len(pq) > 1:
-        node1 = pq.pop()
-        node2 = pq.pop()
+    while len(priorityQueue) > 1:
+        node1 = priorityQueue.pop()
+        node2 = priorityQueue.pop()
         node3 = HuffNode(node1.value + node2.value)
         node3.left = node1
         node3.right = node2
         huff_tree.append(node3)
-        pq.append(node3)
-        pq = sorted(pq, key = lambda node : node.value, reverse=True)
+        priorityQueue.append(node3)
+        priorityQueue = sorted(priorityQueue, key = lambda node : node.value, reverse=True)
 
     binary_code = {}
     binary_prefix = ''
