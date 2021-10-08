@@ -36,6 +36,12 @@ def huffman_encoding(data):
 
     huff_tree = []
 
+    if len(frequencyArray) == 1:
+        node1 = frequencyArray[0]
+        huff_node = HuffNode(node1.value)
+        huff_node.left = node1
+        huff_tree.append(huff_node)
+
     while len(priorityQueue) > 1:
         node1 = priorityQueue.pop()
         node2 = priorityQueue.pop()
@@ -121,7 +127,14 @@ if __name__ == "__main__":
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
     
-
+    # case 4 encoding and decoding
+    # expect the size of the encoded data to be smaller 
+    encoded_data, tree = huffman_encoding("BBBBBBBBBBBB")
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    decoded_data = huffman_decoding(encoded_data, tree)
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
 
 
 

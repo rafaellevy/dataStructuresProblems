@@ -60,6 +60,8 @@ def union(llist_1, llist_2):
     union_llist = LinkedList()
     for value in union_set:
         union_llist.append(value)
+    if not union_llist.head:
+        return "empty union"
     return union_llist
 
 def intersection(llist_1, llist_2):
@@ -83,6 +85,8 @@ def intersection(llist_1, llist_2):
     inter_llist = LinkedList()
     for value in inter_set:
         inter_llist.append(value)
+    if not inter_llist.head:
+        return "empty intersection"
     return inter_llist
 
 
@@ -142,5 +146,22 @@ for i in element_2:
 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> """
 print (union(linked_list_5,linked_list_6))
 """expect intersection to be: empty """
+print (intersection(linked_list_5,linked_list_6))
+
+# test 4
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_1 = []
+element_2 = []
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+# expect union to be empty
+print (union(linked_list_5,linked_list_6))
+# expect intersection to be empty
 print (intersection(linked_list_5,linked_list_6))
 

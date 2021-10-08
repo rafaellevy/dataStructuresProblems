@@ -11,4 +11,4 @@ If the capacity is full, removing the least recently used is O(1) because it is 
 The hash table was used to improve time complexity. Looking up the nodes from
 the LRUCache becomes O(1).
 
-In regard to the space complexity, it will be constant because the operations don't create additional memory
+In regard to the space complexity, it will be O(n) because the cache has a capacity.

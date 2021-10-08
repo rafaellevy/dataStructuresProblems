@@ -34,6 +34,8 @@ def is_user_in_group(user, group):
     # if both are empty return false
     if user in group.users:
         return True
+    if not user:
+        return "please give the user a name"
     if len(group.groups) == 0:
         return False
     # if name is in users array return true
@@ -51,3 +53,6 @@ print(is_user_in_group(sub_child_user, parent))
 print()
 # Expect to be false
 print(is_user_in_group("Some User", sub_child))
+print()
+#expect error message
+print(is_user_in_group("", parent))

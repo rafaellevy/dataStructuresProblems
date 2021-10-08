@@ -45,6 +45,8 @@ print(find_files(".c", testString ))
 print()
 # expect empty list
 print(find_files(".pdf", testString ))
+# expect invalid path
+print(find_files(".pdf", "invalidPath"))
 
 
    
